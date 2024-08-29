@@ -1,4 +1,4 @@
-package net.hitpromo.jsontodatabase.model;
+package net.hitpromo.jsontodatabase.entities;
 
 public class Product {
 

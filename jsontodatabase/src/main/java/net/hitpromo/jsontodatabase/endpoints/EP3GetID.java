@@ -1,26 +1,20 @@
 package net.hitpromo.jsontodatabase.endpoints;
 
-import org.springframework.stereotype.Repository;
+import net.hitpromo.jsontodatabase.entities.Product;
+import net.hitpromo.jsontodatabase.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import org.apache.catalina.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
-import com.veinhorn.spring.sqlfile.SqlFromResource;
-
 @RestController
 public class EP3GetID {
 
+	@Autowired
+	private ProductRepository productRepository;
+
 	@GetMapping("/find-id/{productId}")
-	public String createProduct(@PathVariable int productId) {
-		System.out.println(productId);
-		return "wow3!";
-	}
-	@Repository
-	public interface UserRepository extends JpaRepository<User, Integer> {
-		@SqlFromResource(path = "select_user_by_id.sql")
-		User findById(int userId);
+	public Product getProductById(@PathVariable int productId) {
+		return productRepository.findById(productId).orElse(null);
 	}
 }
