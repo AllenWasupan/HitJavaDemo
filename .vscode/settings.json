@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "jsontodatabase/src/main/java/net/hitpromo/jsontodatabase"
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
+}
