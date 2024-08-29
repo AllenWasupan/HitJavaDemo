@@ -14,4 +14,5 @@ public class EP2Inventory {
 		System.out.println(product);
 		return "wow2!";
 	}
+	// Desgin script to iterate through all products and then all sku's and verify inventory data count
 }
