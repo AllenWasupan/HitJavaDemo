@@ -31,7 +31,7 @@ public class EP1Upload {
 
         Product p = responseDTO.makeProduct(1);
         productRepository.save(p);
-
+        // TODO: update other tables, such as SKU, Attribute, ProductAttribute
         System.out.println(responseDTO);
         return responseDTO;
     }

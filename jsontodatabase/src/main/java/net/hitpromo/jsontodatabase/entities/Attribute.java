@@ -15,6 +15,12 @@ public class Attribute {
     @Column(name = "value")
     private String value;
 
+    
+    public Attribute() {
+        this.id = 0;
+        this.value = null;
+    }
+    
     public Attribute(int id, String value) {
         this.id = id;
         this.value = value;

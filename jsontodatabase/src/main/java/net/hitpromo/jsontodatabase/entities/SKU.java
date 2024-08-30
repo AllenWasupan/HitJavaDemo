@@ -21,6 +21,13 @@ public class SKU {
 	@Column(name = "inventory")
 	private int inventory;
 
+	public SKU() {
+		this.id = 0;
+		this.productId = 0;
+		this.sku = null;
+		this.inventory = 0;
+	}
+
 	public SKU(final int id, final int productId, final String sku, final int inventory) {
 		this.id = id;
         this.productId = productId;

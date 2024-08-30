@@ -42,15 +42,15 @@ public class Product {
 		return id;
 	}
 
-	public String getproductName() {
+	public String getProductName() {
 		return productName;
 	}
 
-	public String getproductDescription() {
+	public String getProductDescription() {
 		return productDescription;
 	}
 
-	public int gettotalInventory() {
+	public int getTotalInventory() {
 		return totalInventory;
 	}
 
