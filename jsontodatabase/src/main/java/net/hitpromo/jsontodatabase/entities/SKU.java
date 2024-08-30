@@ -10,10 +10,10 @@ import jakarta.persistence.Id;
 public class SKU {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final String id;
+	private final int id;
 	
 	@Column(name = "product_id")
-	private String productId;
+	private int productId;
 
 	@Column(name = "sku")
 	private String sku;
@@ -21,18 +21,18 @@ public class SKU {
 	@Column(name = "inventory")
 	private int inventory;
 
-	public SKU(final String id, final String productId, final String sku, final int inventory) {
+	public SKU(final int id, final int productId, final String sku, final int inventory) {
 		this.id = id;
         this.productId = productId;
 		this.sku = sku;
 		this.inventory = inventory;
 	}
     
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public String getproduct_id() {
+	public int getproduct_id() {
 		return productId;
 	}
 

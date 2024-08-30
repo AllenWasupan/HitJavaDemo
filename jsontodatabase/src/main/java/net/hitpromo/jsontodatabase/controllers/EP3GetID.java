@@ -2,10 +2,10 @@ package net.hitpromo.jsontodatabase.controllers;
 
 import net.hitpromo.jsontodatabase.entities.Product;
 import net.hitpromo.jsontodatabase.entities.ProductAttribute;
-import net.hitpromo.jsontodatabase.entities.AttributeValue;
+import net.hitpromo.jsontodatabase.entities.Attribute;
 import net.hitpromo.jsontodatabase.repositories.ProductRepository;
 import net.hitpromo.jsontodatabase.repositories.ProductAttributeRepository;
-import net.hitpromo.jsontodatabase.repositories.AttributeValueRepository;
+import net.hitpromo.jsontodatabase.repositories.AttributeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ public class EP3GetID {
 	private ProductAttributeRepository productAttributeRepository;
 
 	@Autowired
-	private AttributeValueRepository attributeValueRepository;
+	private AttributeRepository attributeRepository;
 
 	@GetMapping("/find-id/{productId}")
 	public ResponseEntity<Product> getProductById(@PathVariable("productId") int productId) {
@@ -36,6 +36,11 @@ public class EP3GetID {
 		System.out.println("product: " + p);
 		System.out.println("productAttribute: " + pAList);
 		System.out.println("pACount: " + productAttributeRepository.count());
+		// Request failed if product is null
+		if (p == null) {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
+		// Otherwise, return the product
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 

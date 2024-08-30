@@ -27,13 +27,13 @@ CREATE TABLE IF NOT EXISTS `product` (
   `product_description` varchar(255) NOT NULL,
   `total_inventory` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `product_name` (`product_name`)
+  KEY `product_name` (`product_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table product_inventory_assignment_rest.product: ~1 rows (approximately)
 INSERT INTO `product` (`id`, `product_name`, `product_description`, `total_inventory`) VALUES
 	(1, 'Z135', 'Rays baseball cap', 1855);
-
+ANALYZE TABLE `product`;
 -- Dumping structure for table product_inventory_assignment_rest.sku
 DROP TABLE IF EXISTS `sku`;
 CREATE TABLE IF NOT EXISTS `sku` (
@@ -51,27 +51,23 @@ INSERT INTO `sku` (`id`, `product_id`, `sku`, `inventory`) VALUES
 	(1, 1, 'Z135-28862', 1000),
 	(2, 1, 'Z136-29055', 855);
 
--- Create attribute_value table
-DROP TABLE IF EXISTS `attribute_value`;
-CREATE TABLE IF NOT EXISTS `attribute_value` (
+-- Create attribute table
+DROP TABLE IF EXISTS `attribute`;
+CREATE TABLE IF NOT EXISTS `attribute` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `attribute_name` int(11) NOT NULL,
   `value` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_attribute_value_attribute` (`attribute_name`),
-  CONSTRAINT `FK_attribute_value_attribute` FOREIGN KEY (`attribute_name`) REFERENCES `attribute` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Insert sample data into attribute_value table
-INSERT INTO `attribute_value` (`id`, `attribute_name`, `value`) VALUES
-  (1, 'Color', 'Red'),
-  (2, 'Color', 'Blue'),
-  (3, 'Color', 'Green'),
-  (4, 'Size', 'XS'),
-  (5, 'Size', 'S'),
-  (6, 'Size', 'M'),
-  (7, 'Size', 'L'),
-  (8, 'Size', 'XL');
+-- Insert sample data into attribute table
+INSERT INTO `attribute` (`id`, `value`) VALUES
+  (1, 'Red'),
+  (2, 'Blue'),
+  (3, 'Green'),
+  (4, 'XS'),
+  (5, 'S'),
+  (6, 'M'),
+  (7, 'L');
 
 -- Create product_attribute table
 DROP TABLE IF EXISTS `product_attribute`;
@@ -85,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `product_attribute` (
   KEY `FK_product_attribute_product` (`product_id`),
   KEY `FK_product_attribute_attribute_value` (`attribute_value_id`),
   CONSTRAINT `FK_product_attribute_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_product_attribute_attribute_value` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute_value` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_product_attribute_attribute_value` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Insert sample data into product_attribute table
@@ -94,6 +90,7 @@ INSERT INTO `product_attribute` (`id`, `product_id`, `attribute_value_id`, `posi
   (2, 1, 2, 2), -- Product 1, Color Blue, Position 2
   (3, 1, 5, 1), -- Product 1, Size S, Position 1
   (4, 1, 7, 2); -- Product 1, Size L, Position 2
+  
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

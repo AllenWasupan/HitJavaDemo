@@ -4,5 +4,6 @@
     ],
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.updateBuildConfiguration": "automatic",
-    "gradle.autoDetect": "on"
+    "gradle.autoDetect": "on",
+    "git.ignoreLimitWarning": true
 }

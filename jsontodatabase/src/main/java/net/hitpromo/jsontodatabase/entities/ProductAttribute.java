@@ -15,19 +15,15 @@ public class ProductAttribute {
     @Column(name = "product_id")
     private int productId;
 
-    @Column(name = "attribute_id")
-    private int attributeId;
-
     @Column(name = "attribute_value_id")
     private int attributeValueId;
 
     @Column(name = "position")
     private int position;
 
-    public ProductAttribute(int id, int productId, int attributeId, int attributeValueId, int position) {
+    public ProductAttribute(int id, int productId, int attributeValueId, int position) {
         this.id = id;
         this.productId = productId;
-        this.attributeId = attributeId;
         this.attributeValueId = attributeValueId;
         this.position = position;
     }
@@ -35,7 +31,6 @@ public class ProductAttribute {
     public ProductAttribute() {
         this.id = 0;
         this.productId = 0;
-        this.attributeId = 0;
         this.attributeValueId = 0;
         this.position = 0;
     }
@@ -48,12 +43,8 @@ public class ProductAttribute {
         return productId;
     }
 
-    public int getAttribute() {
-        return attributeId;
-    }
-
-    public int getAttributeValue() {
-        return attributeId;
+    public int getAttributeValueId() {
+        return attributeValueId;
     }
 
     public int getPosition() {
@@ -64,11 +55,9 @@ public class ProductAttribute {
         this.productId = productId;
     }
 
-    public void setAttribute(int attributeId) {
-        this.attributeId = attributeId;
-    }
 
-    public void setAttributeValue(int attributeValueId) {
+
+    public void setAttributeValueId(int attributeValueId) {
         this.attributeValueId = attributeValueId;
     }
 
@@ -78,7 +67,7 @@ public class ProductAttribute {
 
     @Override
     public String toString() {
-        return "ProductAttribute [id=" + id + ", product=" + productId + ", attribute=" + attributeId + ", attributeValue="
+        return "ProductAttribute [id=" + id + ", product=" + productId  + ", attributeValue="
                 + attributeValueId + ", position=" + position + "]";
     }
 
