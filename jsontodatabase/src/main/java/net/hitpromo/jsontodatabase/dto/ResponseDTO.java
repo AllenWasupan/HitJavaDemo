@@ -2,18 +2,13 @@ package net.hitpromo.jsontodatabase.dto;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import net.hitpromo.jsontodatabase.entities.Product;
-import net.hitpromo.jsontodatabase.repositories.ProductRepository;
 
+@JsonPropertyOrder({ "product_name", "product_description", "total_inventory", "stock" })
 public class ResponseDTO {
-    @Autowired
-    private ProductRepository productRepository;
-
-    private int productId;
 
     @JsonProperty("product_name")
     private String productName;
@@ -22,37 +17,10 @@ public class ResponseDTO {
     @JsonProperty("total_inventory")
     private int totalInventory;
 
-
-    private Product product;
     private List<StockDTO> stock;
 
     public ResponseDTO() {
         System.out.println("ResponseDTO Empty Init");
-    }
-
-    public ResponseDTO(Product product) {
-        this.product = product;
-        
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public List<StockDTO> getStock() {
-        return stock;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
     }
 
     public String getProductName() {
@@ -78,6 +46,10 @@ public class ResponseDTO {
     public void setTotalInventory(int totalInventory) {
         this.totalInventory = totalInventory;
     }
+    
+    public List<StockDTO> getStock() {
+        return stock;
+    }
 
     public void setStock(List<StockDTO> stock) {
         this.stock = stock;
@@ -85,14 +57,13 @@ public class ResponseDTO {
 
     @Override
     public String toString() {
-        return "ProductResponseDTO [product=" + product + ", stock=" + stock + "]";
+        return "ResponseDTO [productName=" + productName + ", productDescription=" + productDescription
+                + ", totalInventory=" + totalInventory + ", stock=" + stock + "]";
     }
 
-    public Product makeProduct() {
-        System.out.println("Making Product + " + productRepository.count());
-        int c = (int)productRepository.count()+1;
-        productId = c;
-        Product product = new Product(productId, productName, productDescription, totalInventory);
+    public Product makeProduct(int productId) {
+        Product product = new Product(productId+1, productName, productDescription, totalInventory);
         return product;
     }
+
 }

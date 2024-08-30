@@ -24,9 +24,6 @@ public class EP3GetID {
 	@Autowired
 	private ProductAttributeRepository productAttributeRepository;
 
-	@Autowired
-	private AttributeRepository attributeRepository;
-
 	@GetMapping("/find-id/{productId}")
 	public ResponseEntity<Product> getProductById(@PathVariable("productId") int productId) {
 		System.out.println("productId: " + productId);

@@ -60,7 +60,8 @@ public class ProductDTO {
     public String toString() {
         return "ProductDTO [productName=" + productName + ", productDescription=" + productDescription + ", totalInventory=" + totalInventory + "]";
     }
-    public Product getProduct() {
+    public Product getProduct(int productId) {
+        this.productId = productId;
         Product product = new Product(productId, productName, productDescription, totalInventory);
         return product;
     }
