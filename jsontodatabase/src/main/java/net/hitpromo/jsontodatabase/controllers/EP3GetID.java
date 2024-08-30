@@ -68,7 +68,9 @@ public class EP3GetID {
 				Attribute attribute = attributeRepository.findById(attributeID).orElse(null);
 
 				attributeList.add(attribute.getValue());
+				System.out.println("AttributeVal: " + attribute.getValue());
 			}
+			System.out.println("AttributeList: " + attributeList);
 			stockDTO.setAttributes(attributeList);
 
 			SKU sku = skuRepository.findByProductId(productId).get(entry.getKey()-1);

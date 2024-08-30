@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SKURepository extends JpaRepository<SKU, Integer> {
     List<SKU> findByProductId(int productId);
+
+    SKU findByProductIdAndSku(int productId, String sku);
 }

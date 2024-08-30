@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "811b6ea8-2b95-4892-b2c7-c4a61057801a",
+		"name": "jsontodatabase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37987433"
+	},
+	"item": [
+		{
+			"name": "Endpoint1Test1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_name\": \"A135\",\r\n    \"product_description\": \"Plain T-Shirt\",\r\n    \"total_inventory\":2345,\r\n    \"stock\": [\r\n        {\r\n            \"attributes\":[\r\n                \"Green\",\r\n                \"XL\"\r\n            ],\r\n            \"sku\":\"A135-a1\",\r\n            \"inventory\":1000\r\n        },\r\n        {\r\n            \"attributes\":[\r\n                \"Blue\",\r\n                \"S\",\r\n                \"Long-Sleeved\"\r\n            ],\r\n            \"sku\":\"A135-b2\",\r\n            \"inventory\":1345\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Endpoint1Test2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_name\": \"B139\",\r\n    \"product_description\": \"Frisbee\",\r\n    \"total_inventory\":2345,\r\n    \"stock\": [\r\n        {\r\n            \"attributes\":[\r\n                \"Green\",\r\n                \"Foldable\"\r\n            ],\r\n            \"sku\":\"B139-c1\",\r\n            \"inventory\":1000\r\n        },\r\n        {\r\n            \"attributes\":[\r\n                \"Red\",\r\n                \"White\",\r\n                \"Blue\",\r\n                \"XL\"\r\n            ],\r\n            \"sku\":\"B139-merica\",\r\n            \"inventory\":1000\r\n        },\r\n        {\r\n            \"attributes\":[\r\n                \"Blue\",\r\n                \"Orange\",\r\n                \"Painted\"\r\n            ],\r\n            \"sku\":\"B139-g8r\",\r\n            \"inventory\":345\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Endpoint2Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"8\",\r\n    \"description\": \"uhoh\",\r\n    \"price\":2055.77\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/profill-rest-api-dev/fulfillment/getInventory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profill-rest-api-dev",
+						"fulfillment",
+						"getInventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Endpoint3Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/find-id/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find-id",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "printallproducts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/find-all-products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find-all-products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

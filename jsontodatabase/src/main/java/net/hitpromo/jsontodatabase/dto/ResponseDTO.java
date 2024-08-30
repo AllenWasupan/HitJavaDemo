@@ -69,7 +69,7 @@ public class ResponseDTO {
     }
 
     public Product makeProduct(int productId) {
-        Product product = new Product(productId+1, productName, productDescription, totalInventory);
+        Product product = new Product(productId, productName, productDescription, totalInventory);
         return product;
     }
 

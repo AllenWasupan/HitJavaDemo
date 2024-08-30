@@ -51,7 +51,7 @@ INSERT INTO `sku` (`id`, `product_id`, `sku`, `inventory`) VALUES
 	(1, 1, 'Z135-28862', 1000),
 	(2, 1, 'Z136-29055', 855);
 
--- Create attribute table
+-- Dumping structure for table product_inventory_assignment_rest.attribute
 DROP TABLE IF EXISTS `attribute`;
 CREATE TABLE IF NOT EXISTS `attribute` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `attribute` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Insert sample data into attribute table
+-- Dumping data for table product_inventory_assignment_rest.attribute: ~7 rows (approximately)
 INSERT INTO `attribute` (`id`, `value`) VALUES
   (1, 'Red'),
   (2, 'Blue'),
@@ -69,7 +69,7 @@ INSERT INTO `attribute` (`id`, `value`) VALUES
   (6, 'M'),
   (7, 'L');
 
--- Create product_attribute table
+-- Dumping structure for table product_inventory_assignment_rest.product_attribute
 DROP TABLE IF EXISTS `product_attribute`;
 CREATE TABLE IF NOT EXISTS `product_attribute` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `product_attribute` (
   CONSTRAINT `FK_product_attribute_attribute_value` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Insert sample data into product_attribute table
+-- Dumping data for table product_inventory_assignment_rest.product_attribute: ~4 rows (approximately)
 INSERT INTO `product_attribute` (`id`, `product_id`, `attribute_value_id`, `position`) VALUES
   (1, 1, 1, 1), -- Product 1, Color Red, Position 1
   (2, 1, 2, 2), -- Product 1, Color Blue, Position 2

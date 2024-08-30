@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface ProductAttributeRepository extends JpaRepository<ProductAttribute, Integer> {
     List<ProductAttribute> findByProductId(int productId);
+
+    ProductAttribute findByProductIdAndAttributeValueIdAndPosition(int id, int id2, int position);
+
 }
