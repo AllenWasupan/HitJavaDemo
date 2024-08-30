@@ -1,32 +1,86 @@
 package net.hitpromo.jsontodatabase.entities;
 
-import aj.org.objectweb.asm.Attribute;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class ProductAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private final int id;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @Column(name = "product_id")
+    private int productId;
 
-    @ManyToOne
-    @JoinColumn(name = "attribute_id")
-    private Attribute attribute;
+    @Column(name = "attribute_id")
+    private int attributeId;
 
-    @ManyToOne
-    @JoinColumn(name = "attribute_value_id")
-    private AttributeValue attributeValue;
+    @Column(name = "attribute_value_id")
+    private int attributeValueId;
 
+    @Column(name = "position")
     private int position;
+
+    public ProductAttribute(int id, int productId, int attributeId, int attributeValueId, int position) {
+        this.id = id;
+        this.productId = productId;
+        this.attributeId = attributeId;
+        this.attributeValueId = attributeValueId;
+        this.position = position;
+    }
+
+    public ProductAttribute() {
+        this.id = 0;
+        this.productId = 0;
+        this.attributeId = 0;
+        this.attributeValueId = 0;
+        this.position = 0;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public int getAttribute() {
+        return attributeId;
+    }
+
+    public int getAttributeValue() {
+        return attributeId;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public void setAttribute(int attributeId) {
+        this.attributeId = attributeId;
+    }
+
+    public void setAttributeValue(int attributeValueId) {
+        this.attributeValueId = attributeValueId;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductAttribute [id=" + id + ", product=" + productId + ", attribute=" + attributeId + ", attributeValue="
+                + attributeValueId + ", position=" + position + "]";
+    }
 
     // Getters and Setters
 }

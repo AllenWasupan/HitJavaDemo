@@ -3,7 +3,8 @@ package net.hitpromo.jsontodatabase.repositories;
 import net.hitpromo.jsontodatabase.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+import java.util.Optional;
 
-    
+public interface ProductRepository extends JpaRepository<Product, Integer> {
+    Optional<Product> findByProductName(String productName);
 }

@@ -1,4 +1,4 @@
-package net.hitpromo.jsontodatabase.endpoints;
+package net.hitpromo.jsontodatabase.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloWorldController {
 
-	@GetMapping("/")
+	@GetMapping("/helloworld")
 	public String hello() {
 		return "Hello World?";
 	}

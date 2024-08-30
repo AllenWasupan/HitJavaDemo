@@ -9,11 +9,10 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "product")
-public class Product {
+public class ProductDTO {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final int id;
+	private int id;
 
 	@Column(name = "product_name")
 	private String productName;
@@ -23,34 +22,30 @@ public class Product {
 
 	@Column(name = "total_inventory")
 	private int totalInventory;
+	
+	public ProductDTO() {
+	}
 
-	public Product(final int id, final String productName, final String productDescription, final int totalInventory) {
+	public ProductDTO(final int id, final String productName, final String productDescription, final int totalInventory) {
 		this.id = id;
-        this.productName = productName;
+		this.productName = productName;
 		this.productDescription = productDescription;
 		this.totalInventory = totalInventory;
-	}
-    
-	public Product() {
-		this.id = 0;
-		this.productName = null;
-		this.productDescription = null;
-		this.totalInventory = 0;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public String getproductName() {
+	public String getProductName() {
 		return productName;
 	}
 
-	public String getproductDescription() {
+	public String getProductDescription() {
 		return productDescription;
 	}
 
-	public int gettotalInventory() {
+	public int getTotalInventory() {
 		return totalInventory;
 	}
 
@@ -68,8 +63,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", product_name=" + productName + ", product_description=" + productDescription + ", total_inventory=" + totalInventory + "]";
+		return "ProductDTO [id=" + id + ", productName=" + productName + ", productDescription=" + productDescription + ", totalInventory=" + totalInventory + "]";
 	}
 
-     
+	 
 }
