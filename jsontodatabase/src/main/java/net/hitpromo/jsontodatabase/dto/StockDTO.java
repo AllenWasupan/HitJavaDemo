@@ -4,7 +4,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class StockDTO {
-    
 
     @JsonProperty("attributes")
     private List<String> attributes;
@@ -15,13 +14,11 @@ public class StockDTO {
     @JsonProperty("inventory")
     private int inventory;
 
-    private int productId;
 
     public StockDTO() {
     }
 
-    public StockDTO(int productId, List<String> attributes, String sku, int inventory) {
-        this.productId = productId;
+    public StockDTO(List<String> attributes, String sku, int inventory) {
         this.attributes = attributes;
         this.sku = sku;
         this.inventory = inventory;

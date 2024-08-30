@@ -13,12 +13,11 @@ import net.hitpromo.jsontodatabase.repositories.AttributeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
-import java.util.Optional;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +39,7 @@ public class EP3GetID {
 		Product product = productRepository.findById(productId).orElse(null);
 		// Request failed if product is null
 		if (product == null) {
-			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(new LinkedMultiValueMap<>(), HttpStatus.NO_CONTENT);
 		}
 
 		List<StockDTO> stockList = new ArrayList<>();
