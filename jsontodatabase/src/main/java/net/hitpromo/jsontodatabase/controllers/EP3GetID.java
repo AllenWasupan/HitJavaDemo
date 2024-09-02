@@ -57,12 +57,14 @@ public class EP3GetID {
 		}
 		
 		// Iterate through the grouped attributes and process them
+		// Ex: T-shirt with a red and blue all sizes will be tie Red,XL then Red,L then Blue,XL then Blue,L and etc. 
 		for (Map.Entry<Integer, List<ProductAttribute>> entry : groupedAttributes.entrySet()) {
 			StockDTO stockDTO = new StockDTO();
 			int position = entry.getKey();
 			List<ProductAttribute> attributesAtPosition = entry.getValue();
 			List<String> attributeList = new ArrayList<>();
 			System.out.println("Position: " + position);
+			// Iterate through the attributes at the position and add them to the attributeList
 			for (ProductAttribute pA : attributesAtPosition) {
 				int attributeID = pA.getAttributeValueId();
 				Attribute attribute = attributeRepository.findById(attributeID).orElse(null);
@@ -70,6 +72,8 @@ public class EP3GetID {
 				attributeList.add(attribute.getValue());
 				System.out.println("AttributeVal: " + attribute.getValue());
 			}
+			// Add the attributeList to the stockDTO and tie the stockDTO to the Product
+			
 			System.out.println("AttributeList: " + attributeList);
 			stockDTO.setAttributes(attributeList);
 

@@ -55,6 +55,5 @@ public class SKU {
 	public String toString() {
 		return "Product [id=" + id + ", product_name=" + productId + ", sku=" + sku + ", inventory=" + inventory + "]";
 	}
-
      
 }
